@@ -754,13 +754,21 @@
     </div>
 </div>
 
-                        <!-- Workshop Facade Image Box (ubicacion.jpeg) -->
+                        <!-- Workshop Facade Image Box (Galería interactiva) -->
                         <div class="bg-white border border-slate-200 rounded-3xl p-4 shadow-sm">
-                            <div class="relative rounded-2xl overflow-hidden border border-slate-200 group">
+                            <div class="relative rounded-2xl overflow-hidden border border-slate-200 group cursor-pointer" onclick="openGallery(0)">
                                 <img src="ubicacion.jpeg" alt="Fachada del taller Tornería Daniel" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x350/0f2b5c/ffffff?text=Fachada+Taller+Torneria+Daniel';">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent p-3 flex flex-col justify-end text-white">
-                                    <span class="text-xs font-bold text-blue-200"><i class="fa-solid fa-building text-amber-400 mr-1"></i> Fachada del Taller</span>
-                                    <p class="text-xs text-slate-300">Ruperto Rasgido y Cjal. Ricardo Alcoleas</p>
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent p-4 flex flex-col justify-end text-white">
+                                    <span class="text-sm font-bold text-amber-400 flex items-center gap-2">
+                                        <i class="fa-solid fa-images"></i> Galería del Taller
+                                    </span>
+                                    <p class="text-xs text-slate-300 mt-1">Click para ver 4 fotos de las instalaciones</p>
+                                </div>
+                                <!-- Icono de expandir al pasar el mouse -->
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
+                                    <div class="bg-white/20 backdrop-blur-md rounded-full p-4 border border-white/40 shadow-lg">
+                                        <i class="fa-solid fa-expand text-white text-2xl"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -838,18 +846,27 @@
         </div>
     </footer>
 
-    <!-- IMAGE MODAL POPUP -->
-    <div id="image-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeImageModal()">
-        <div class="relative max-w-4xl w-full bg-slate-900 rounded-3xl overflow-hidden border border-slate-700 shadow-2xl" onclick="event.stopPropagation()">
-            <button onclick="closeImageModal()" class="absolute top-4 right-4 bg-slate-800 hover:bg-slate-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition z-10 shadow-lg">
+    <!-- IMAGE MODAL POPUP (Soporta Galería) -->
+    <div id="image-modal" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-4" onclick="closeImageModal()">
+        
+        <!-- Flechas de navegación (solo para galería) -->
+        <button id="modal-prev" class="absolute left-2 sm:left-8 top-1/2 transform -translate-y-1/2 bg-slate-800/80 hover:bg-slate-700 text-white w-12 h-12 rounded-full hidden items-center justify-center transition z-20 shadow-lg border border-slate-600" onclick="event.stopPropagation(); changeGalleryImage(-1)">
+            <i class="fa-solid fa-chevron-left text-xl"></i>
+        </button>
+        <button id="modal-next" class="absolute right-2 sm:right-8 top-1/2 transform -translate-y-1/2 bg-slate-800/80 hover:bg-slate-700 text-white w-12 h-12 rounded-full hidden items-center justify-center transition z-20 shadow-lg border border-slate-600" onclick="event.stopPropagation(); changeGalleryImage(1)">
+            <i class="fa-solid fa-chevron-right text-xl"></i>
+        </button>
+
+        <div class="relative max-w-5xl w-full bg-slate-900 rounded-3xl overflow-hidden border border-slate-700 shadow-2xl" onclick="event.stopPropagation()">
+            <button onclick="closeImageModal()" class="absolute top-4 right-4 bg-slate-800/80 hover:bg-slate-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition z-20 shadow-lg backdrop-blur-sm">
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
             <div class="p-2 bg-black flex justify-center max-h-[75vh]">
-                <img id="modal-img" src="" alt="Ampliada" class="max-h-[70vh] w-auto object-contain rounded-xl">
+                <img id="modal-img" src="" alt="Ampliada" class="max-h-[70vh] w-auto object-contain rounded-xl transition-opacity duration-300">
             </div>
             <div class="p-6 bg-slate-900 text-white">
                 <h4 id="modal-caption" class="text-lg font-bold text-blue-200"></h4>
-                <p class="text-xs text-slate-400 mt-1">Tornería Daniel - Fotografía de componente industrial</p>
+                <p class="text-xs text-slate-400 mt-1">Tornería Daniel - Fotografía de instalaciones y componentes</p>
             </div>
         </div>
     </div>
@@ -874,8 +891,26 @@
             });
         });
 
-        // Image Modal Handler
+        // Configuración de la Galería del Taller
+        const workshopGallery = [
+            { src: 'ubicacion.jpeg', caption: 'Fachada del Taller' },
+            { src: 'Vista panoramica del taller.jpeg', caption: 'Vista panorámica de las instalaciones' },
+            { src: 'Torno Turry 250.jpeg', caption: 'Torno Turry 250 - Maquinaria Principal' },
+            { src: 'Cepillo.jpeg', caption: 'Cepillo Limador' }
+        ];
+
+        let currentGalleryIndex = 0;
+        let isGalleryMode = false;
+
+        // Image Modal Handler (Fotografías individuales)
         function openImageModal(imgSrc, caption) {
+            isGalleryMode = false;
+            
+            document.getElementById('modal-prev').classList.add('hidden');
+            document.getElementById('modal-next').classList.add('hidden');
+            document.getElementById('modal-prev').classList.remove('flex');
+            document.getElementById('modal-next').classList.remove('flex');
+
             const modal = document.getElementById('image-modal');
             const modalImg = document.getElementById('modal-img');
             const modalCaption = document.getElementById('modal-caption');
@@ -885,9 +920,61 @@
             modal.classList.remove('hidden');
         }
 
+        // Handler para abrir la Galería Múltiple
+        function openGallery(index) {
+            isGalleryMode = true;
+            currentGalleryIndex = index;
+            
+            document.getElementById('modal-prev').classList.remove('hidden');
+            document.getElementById('modal-next').classList.remove('hidden');
+            document.getElementById('modal-prev').classList.add('flex');
+            document.getElementById('modal-next').classList.add('flex');
+
+            updateGalleryView();
+            document.getElementById('image-modal').classList.remove('hidden');
+        }
+
+        function updateGalleryView() {
+            const modalImg = document.getElementById('modal-img');
+            const modalCaption = document.getElementById('modal-caption');
+            const currentItem = workshopGallery[currentGalleryIndex];
+            
+            modalImg.src = currentItem.src;
+            modalCaption.textContent = `${currentItem.caption} (${currentGalleryIndex + 1}/${workshopGallery.length})`;
+        }
+
+        function changeGalleryImage(direction) {
+            if (!isGalleryMode) return;
+            currentGalleryIndex += direction;
+            
+            if (currentGalleryIndex < 0) {
+                currentGalleryIndex = workshopGallery.length - 1;
+            } else if (currentGalleryIndex >= workshopGallery.length) {
+                currentGalleryIndex = 0;
+            }
+            
+            updateGalleryView();
+        }
+
         function closeImageModal() {
             document.getElementById('image-modal').classList.add('hidden');
+            isGalleryMode = false;
         }
+
+        // Navegación con teclado (Flechas y Escape)
+        document.addEventListener('keydown', function(event) {
+            if (!document.getElementById('image-modal').classList.contains('hidden')) {
+                if (event.key === 'Escape') {
+                    closeImageModal();
+                } else if (isGalleryMode) {
+                    if (event.key === 'ArrowLeft') {
+                        changeGalleryImage(-1);
+                    } else if (event.key === 'ArrowRight') {
+                        changeGalleryImage(1);
+                    }
+                }
+            }
+        });
 
         // PDF VISOR INTERACTIVO & RENDERER (PDF.JS)
         if (window['pdfjs-dist/build/pdf']) {
