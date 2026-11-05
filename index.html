@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tornería Daniel | Mecanizado, Tornería & Servicios Industriales</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0f0fe',
+                            500: '#0284c7',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#0f2b5c',
+                            dark: '#0a192f'
+                        },
+                        whatsapp: '#00a884'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- PDF.js library for PDF viewing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+
+        /* Glassmorphism effects */
+        .glass-panel {
+            background: rgba(15, 43, 92, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e40af;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-800 selection:text-white flex flex-col min-h-screen">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-brand-dark text-slate-200 text-xs sm:text-sm py-2 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center gap-1.5 font-medium">
+                    <i class="fa-solid fa-clock text-blue-400"></i> Lun - Sáb: 8:30-12 hs y 13-19 hs
+                </span>
+                <span class="hidden md:inline-block text-slate-600">|</span>
+                <span class="hidden md:flex items-center gap-1.5 text-slate-300">
+                    <i class="fa-solid fa-bolt text-amber-400"></i> Atención de urgencias y campo 24 hs
+                </span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://wa.me/5492974763196?text=Hola%20Torner%C3%ADa%20Daniel%2C%20tengo%20una%20consulta%20sobre%20un%20trabajo%20de%20mecanizado%20para%20flota%20%5Bliviana%20%2F%20pesada%5D.%20%C2%BFEst%C3%A1n%20tomando%20trabajos%3F" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition flex items-center gap-1.5 font-bold">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-base"></i> +54 9 297 476 3196
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                
+                <!-- Logo Branding (Enlarged) -->
+                <a href="#" class="flex items-center gap-4 group">
+                    <img src="logo.jpeg" alt="Tornería Daniel Logo" class="h-16 sm:h-20 w-auto object-contain rounded-xl border border-slate-200 shadow-md group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://placehold.co/160x160/0f2b5c/ffffff?text=Torneria+Daniel';">
+                    <div>
+                        <span class="text-2xl sm:text-3xl font-black tracking-tight text-brand-900 block leading-none">
+                            TORNERÍA DANIEL
+                        </span>
+                        <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-brand-600 block mt-1">
+                            Mecanizado & Tornería de Precisión
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold text-slate-700">
+                    <a href="#inicio" class="hover:text-brand-800 transition py-1 border-b-2 border-transparent hover:border-brand-800">Inicio</a>
+                    <a href="#empresa" class="hover:text-brand-800 transition py-1 border-b-2 border-transparent hover:border-brand-800">La Empresa</a>
+                    <a href="#servicios" class="hover:text-brand-800 transition py-1 border-b-2 border-transparent hover:border-brand-800">Servicios y Galería</a>
+                    <a href="#catalogo" class="hover:text-brand-800 transition py-1 border-b-2 border-transparent hover:border-brand-800 flex items-center gap-1.5">
+                        <i class="fa-solid fa-file-pdf text-red-500"></i> Catálogo PDF
+                    </a>
+                    <a href="#contacto" class="hover:text-brand-800 transition py-1 border-b-2 border-transparent hover:border-brand-800">Ubicación y Contacto</a>
+                </nav>
+
+                <!-- Quick Call WhatsApp CTA (Key Location 1) -->
+                <div class="hidden sm:flex items-center">
+                    <a href="https://wa.me/5492974763196?text=Hola%20Torner%C3%ADa%20Daniel%2C%20tengo%20una%20consulta%20sobre%20un%20trabajo%20de%20mecanizado%20para%20flota%20%5Bliviana%20%2F%20pesada%5D.%20%C2%BFEst%C3%A1n%20tomando%20trabajos%3F" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2.5 text-sm transform hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>Contactar por WhatsApp</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden text-slate-700 hover:text-brand-800 p-2 focus:outline-none" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" class="mobile-link block py-2 text-slate-700 font-semibold hover:text-brand-800">Inicio</a>
+            <a href="#empresa" class="mobile-link block py-2 text-slate-700 font-semibold hover:text-brand-800">La Empresa</a>
+            <a href="#servicios" class="mobile-link block py-2 text-slate-700 font-semibold hover:text-brand-800">Servicios y Galería</a>
+            <a href="#catalogo" class="mobile-link block py-2 text-slate-700 font-semibold hover:text-brand-800 flex items-center gap-2">
+                <i class="fa-solid fa-file-pdf text-red-500"></i> Catálogo del proveedor
+            </a>
+            <a href="#contacto" class="mobile-link block py-2 text-slate-700 font-semibold hover:text-brand-800">Ubicación y Contacto</a>
+            <a href="https://wa.me/5492974763196?text=Hola%20Torner%C3%ADa%20Daniel%2C%20tengo%20una%20consulta%20sobre%20un%20trabajo%20de%20mecanizado%20para%20flota%20%5Bliviana%20%2F%20pesada%5D.%20%C2%BFEst%C3%A1n%20tomando%20trabajos%3F" target="_blank" class="mobile-link block text-center bg-emerald-600 text-white font-bold py-3 rounded-2xl shadow">
+                <i class="fa-brands fa-whatsapp text-lg mr-2"></i> Contactar por WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+
+        <!-- HERO SECTION WITH BACKGROUND VIDEO & OVERLAY CARD (LEFT ALIGNED) -->
+        <section id="inicio" class="relative min-h-[85vh] lg:min-h-[90vh] flex items-center overflow-hidden bg-slate-950 text-white py-12 lg:py-20">
+            
+            <!-- Fullscreen Background Video -->
+            <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0 opacity-60 scale-105 pointer-events-none object-right">
+                <source src="video.mp4" type="video/mp4">
+            </video>
+
+            <!-- Dark Gradient Mask -->
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-transparent z-10"></div>
+
+            <!-- Content Presentation Box (Key Location 2) -->
+            <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="max-w-xl text-left">
+                    <div class="glass-panel p-6 sm:p-10 rounded-3xl shadow-2xl border border-white/20">
+                        
+                        <!-- Logo in Hero -->
+                        <div class="flex justify-start mb-6">
+                            <div class="p-2.5 bg-white rounded-2xl shadow-xl border border-white/40">
+                                <img src="logo.jpeg" alt="Logo Tornería Daniel" class="h-20 sm:h-28 w-auto object-contain rounded-xl" onerror="this.onerror=null; this.src='https://placehold.co/200x200/0f2b5c/ffffff?text=Torneria+Daniel';">
+                            </div>
+                        </div>
+
+                        <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white mb-4">
+                            TORNERÍA MECÁNICA DE PRECISIÓN
+                        </h1>
+
+                        <p class="text-base sm:text-xl text-blue-100 font-medium leading-relaxed mb-8">
+                            Tornería mecánica de precisión para el sector petrolero e industrial
+                        </p>
+
+                        <!-- Primary Buttons -->
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                            <a href="https://wa.me/5492974763196?text=Hola%20Torner%C3%ADa%20Daniel%2C%20tengo%20una%20consulta%20sobre%20un%20trabajo%20de%20mecanizado%20para%20flota%20%5Bliviana%20%2F%20pesada%5D.%20%C2%BFEst%C3%A1n%20tomando%20trabajos%3F" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-base px-6 py-3.5 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 transform hover:-translate-y-0.5">
+                                <i class="fa-brands fa-whatsapp text-2xl"></i>
+                                <span>Contactar por WhatsApp</span>
+                            </a>
+
+                            <a href="#catalogo" class="bg-white/10 hover:bg-white/20 text-white font-semibold text-sm px-5 py-3.5 rounded-2xl border border-white/30 backdrop-blur-md transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-file-pdf text-red-400"></i>
+                                <span>Catálogo del proveedor</span>
+                            </a>
+                        </div>
+
+                        <!-- Highlights Bar -->
+                        <div class="mt-8 pt-6 border-t border-white/10 flex flex-wrap justify-start gap-5 text-xs text-slate-300 font-medium">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved text-emerald-400"></i> Calidad Garantizada
+                            </span>
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-truck-monster text-blue-400"></i> Servicio 24 hs
+                            </span>
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-oil-well text-amber-400"></i> Sector Petrolero & Industrial
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: LA EMPRESA -->
+        <section id="empresa" class="py-16 lg:py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-brand-600 text-xs font-bold tracking-wider uppercase bg-brand-50 px-3.5 py-1.5 rounded-full border border-brand-100">
+                        Nuestra Identidad
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mt-3">
+                        LA EMPRESA
+                    </h2>
+                    <div class="w-16 h-1 bg-brand-800 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                    
+                    <!-- Exact Company Description Text -->
+                    <div class="lg:col-span-8 bg-slate-50 rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-4 mb-6">
+                                <img src="logo.jpeg" alt="Logo Tornería Daniel" class="w-16 h-16 rounded-2xl object-contain bg-white p-1 border border-slate-200 shadow-sm" onerror="this.style.display='none'">
+                                <div>
+                                    <h3 class="text-2xl font-extrabold text-brand-900">Tornería Daniel</h3>
+                                    <p class="text-xs sm:text-sm text-slate-500 font-medium">de Daniel Silva - Comodoro Rivadavia</p>
+                                </div>
+                            </div>
+                            
+                            <!-- User exact description text -->
+                            <p class="text-slate-700 leading-relaxed text-base sm:text-lg font-normal text-justify">
+                                Tornería Daniel es una PyME dedicada a la prestación de servicios de tornería, mecanizado y fabricación de piezas a medida, según plano o muestra, para empresas y clientes particulares. Con amplia experiencia en el sector, ofrecemos soluciones rápidas, confiables y de alta calidad, adaptadas a las necesidades de cada proyecto. Trabajamos especialmente para la industria, incluyendo el sector petrolero e industrial, brindando servicios de mecanizado, reparación y mantenimiento de componentes. Nuestro compromiso es garantizar la máxima calidad de cada trabajo, optimizar los procesos de nuestros clientes y cumplir con los plazos de entrega acordados, destacándonos por la seriedad, la responsabilidad y la atención personalizada.
+                            </p>
+                        </div>
+
+                        <!-- Highlights Banner -->
+                        <div class="mt-8 pt-6 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                            <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                                <i class="fa-solid fa-truck-monster text-brand-700 text-xl mb-1"></i>
+                                <p class="text-xs font-bold text-slate-800">Flota Pesada</p>
+                            </div>
+                            <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                                <i class="fa-solid fa-oil-well text-brand-700 text-xl mb-1"></i>
+                                <p class="text-xs font-bold text-slate-800">Rubro Petrolero</p>
+                            </div>
+                            <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                                <i class="fa-solid fa-award text-brand-700 text-xl mb-1"></i>
+                                <p class="text-xs font-bold text-slate-800">Piezas a Medida</p>
+                            </div>
+                            <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm">
+                                <i class="fa-solid fa-file-invoice text-brand-700 text-xl mb-1"></i>
+                                <p class="text-xs font-bold text-slate-800">Factura C</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Info Box: Hours & Coverage -->
+                    <div class="lg:col-span-4 flex flex-col gap-6">
+                        
+                        <!-- Horarios de Atencion Card (Updated) -->
+                        <div class="bg-brand-900 text-white rounded-3xl p-6 sm:p-8 shadow-md flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div class="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center text-white">
+                                        <i class="fa-solid fa-clock text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xl font-bold text-white">Horarios de Atención</h4>
+                                        <p class="text-xs text-blue-200">Atención al cliente y taller</p>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white/10 rounded-2xl p-5 border border-white/10 space-y-4 font-medium text-sm">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-blue-200">Días:</span>
+                                        <span class="font-bold text-white">Lunes a Sábados</span>
+                                    </div>
+                                    <hr class="border-white/10">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-blue-200">Mañana:</span>
+                                        <span class="font-bold text-white">8:30 a 12:00 hs</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-blue-200">Tarde:</span>
+                                        <span class="font-bold text-white">13:00 a 19:00 hs</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 pt-4 border-t border-white/10">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-headset text-emerald-400 text-2xl"></i>
+                                    <div>
+                                        <p class="text-xs text-blue-200 font-semibold">Servicio en Campo & Taller</p>
+                                        <p class="text-xs font-bold text-white">Atención las 24 hs ante urgencias</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: GALERÍA Y SERVICIOS -->
+        <section id="servicios" class="py-16 lg:py-20 bg-slate-50 border-y border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-brand-600 text-xs font-bold tracking-wider uppercase bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
+                        Procesos & Componentes Realizados
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mt-3">
+                        NUESTROS SERVICIOS
+                    </h2>
+                    <p class="text-slate-600 text-sm sm:text-base mt-2">
+                        Imágenes reales de trabajos completados en nuestro taller
+                    </p>
+                    <div class="w-16 h-1 bg-brand-800 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- CLEAN IMAGE GALLERY GRID (No image file numbers, pure descriptions) -->
+                <div class="mb-16">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        
+                        <!-- Image 1 -->
+                        <div class="group relative bg-slate-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-200 cursor-pointer" onclick="openImageModal('1.jpeg', 'Mecanizado y ajuste de precisión en plato de torno paralelo')">
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="1.jpeg" alt="Mecanizado en torno" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f2b5c/ffffff?text=Trabajo+en+Torno';">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-5 flex flex-col justify-end text-white opacity-95 group-hover:opacity-100 transition-opacity">
+                                <h4 class="text-base font-bold text-white">Mecanizado en Torno Paralelo</h4>
+                                <p class="text-xs text-blue-200 mt-1">Ajuste de precisión en piezas industriales y ejes pesados.</p>
+                            </div>
+                        </div>
+
+                        <!-- Image 2 -->
+                        <div class="group relative bg-slate-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-200 cursor-pointer" onclick="openImageModal('2.jpeg', 'Perforado con broca y acondicionamiento de placas de acero')">
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="2.jpeg" alt="Perforado de placa" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f2b5c/ffffff?text=Perforado+de+Placa';">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-5 flex flex-col justify-end text-white opacity-95 group-hover:opacity-100 transition-opacity">
+                                <h4 class="text-base font-bold text-white">Perforado de Placas Pesadas</h4>
+                                <p class="text-xs text-blue-200 mt-1">Mecanizado con brocas de gran calibre para estructuras.</p>
+                            </div>
+                        </div>
+
+                        <!-- Image 3 -->
+                        <div class="group relative bg-slate-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-200 cursor-pointer" onclick="openImageModal('3.jpeg', 'Rectificado y torneado de polea / campana metálica')">
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="3.jpeg" alt="Rectificado de campana" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f2b5c/ffffff?text=Rectificado+Polea';">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-5 flex flex-col justify-end text-white opacity-95 group-hover:opacity-100 transition-opacity">
+                                <h4 class="text-base font-bold text-white">Rectificado de Campanas & Poleas</h4>
+                                <p class="text-xs text-blue-200 mt-1">Adaptación y torneado de masas circulares.</p>
+                            </div>
+                        </div>
+
+                        <!-- Image 4 -->
+                        <div class="group relative bg-slate-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-200 cursor-pointer" onclick="openImageModal('4.jpeg', 'Alesado interno de carcasa metálica')">
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="4.jpeg" alt="Alesado interno" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f2b5c/ffffff?text=Alesado+Interno';">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-5 flex flex-col justify-end text-white opacity-95 group-hover:opacity-100 transition-opacity">
+                                <h4 class="text-base font-bold text-white">Alesado Interno Especializado</h4>
+                                <p class="text-xs text-blue-200 mt-1">Ajuste de cavidades en cajas de transmisión de aluminio.</p>
+                            </div>
+                        </div>
+
+                        <!-- Image 5 -->
+                        <div class="group relative bg-slate-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-200 cursor-pointer" onclick="openImageModal('5.jpeg', 'Corte y troquelado de planchuelas de acero a medida')">
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="5.jpeg" alt="Planchuelas troqueladas" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f2b5c/ffffff?text=Fabricacion+Planchuelas';">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-5 flex flex-col justify-end text-white opacity-95 group-hover:opacity-100 transition-opacity">
+                                <h4 class="text-base font-bold text-white">Fabricación de Planchuelas</h4>
+                                <p class="text-xs text-blue-200 mt-1">Placas troqueladas y perforadas para montaje industrial.</p>
+                            </div>
+                        </div>
+
+                        <!-- Image 6 -->
+                        <div class="group relative bg-slate-900 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-slate-200 cursor-pointer" onclick="openImageModal('6.jpeg', 'Lote de pernos roscados y bujes torneados a medida')">
+                            <div class="aspect-[4/3] w-full overflow-hidden">
+                                <img src="6.jpeg" alt="Lote de pernos" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x450/0f2b5c/ffffff?text=Fabricacion+Pernos';">
+                            </div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-5 flex flex-col justify-end text-white opacity-95 group-hover:opacity-100 transition-opacity">
+                                <h4 class="text-base font-bold text-white">Producción de Pernos & Bujes</h4>
+                                <p class="text-xs text-blue-200 mt-1">Piezas con rosca especial fabricadas bajo plano o muestra.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- DETAILED LIST OF SERVICES & EQUIPMENT -->
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Lista de Servicios -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                            <div class="w-10 h-10 rounded-2xl bg-brand-50 text-brand-800 flex items-center justify-center text-xl font-bold">
+                                <i class="fa-solid fa-list-check"></i>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-brand-900">Listado de Servicios</h3>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-700">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Producción en Serie:</strong> Fabricación de series pequeñas y de gran escala.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Piezas Especiales:</strong> Torneado de modelos metálicos según plano o muestra.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Pistones Hidráulicos:</strong> Reparación integral y rectificado.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Rubro Petrolero:</strong> Reparación y mantenimiento de herramientas de pozo.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Flota Pesada:</strong> Mantenimiento de tambores, sistemas de frenos, pernos y llaves Foster, Carter Tool y BJ.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Transmisiones:</strong> Reparación completa de cajas angulares, cardanes, diferenciales y ejes.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-emerald-600 mt-1"></i>
+                                <span><strong>Bujes & Roscas:</strong> Fabricación de pernos, bujes, chaveteros y roscas especiales.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Equipamiento del Taller -->
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+                                <div class="w-10 h-10 rounded-2xl bg-brand-50 text-brand-800 flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                                </div>
+                                <h3 class="text-xl font-extrabold text-brand-900">Equipamiento del Taller</h3>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3 text-xs sm:text-sm font-semibold text-slate-700">
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-gear text-brand-700"></i> Torno paralelo
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-dharmachakra text-brand-700"></i> Taladro radial
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-bolt text-brand-700"></i> Soldadoras electrodo
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-fire text-brand-700"></i> Equipo oxicorte
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-compact-disc text-brand-700"></i> Amoladora & Cepillo
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-ruler-combined text-brand-700"></i> Serrucho hidráulico
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                            <span>Comodoro Rivadavia - Chubut</span>
+                            <span class="font-bold text-brand-800"><i class="fa-solid fa-truck-fast"></i> Movilidad Propia</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: VISUALIZAR CATÁLOGO DEL PROVEEDOR (PDF) -->
+        <section id="catalogo" class="py-16 lg:py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="text-brand-600 text-xs font-bold tracking-wider uppercase bg-brand-50 px-3.5 py-1.5 rounded-full border border-brand-100">
+                        Documentación
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mt-3">
+                        Visualizar catálogo del proveedor
+                    </h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                        Examine nuestra carpeta técnica digital (<code class="bg-slate-100 px-1.5 py-0.5 rounded text-brand-800 font-mono text-xs">catalogo.pdf</code>).
+                    </p>
+                    <div class="w-16 h-1 bg-brand-800 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- PDF Viewer Container -->
+                <div class="bg-slate-900 rounded-3xl shadow-2xl border border-slate-800 overflow-hidden">
+                    
+                    <!-- PDF Toolbar -->
+                    <div class="bg-slate-800 px-4 py-3 border-b border-slate-700 flex flex-wrap items-center justify-between gap-3 text-white text-sm">
+                        <div class="flex items-center space-x-3">
+                            <span class="flex items-center gap-2 font-semibold text-xs sm:text-sm text-slate-200">
+                                <i class="fa-solid fa-file-pdf text-red-500 text-lg"></i>
+                                <span id="pdf-doc-title">catalogo.pdf</span>
+                            </span>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="flex items-center space-x-2">
+                            <button id="prev-page" class="bg-slate-700 hover:bg-slate-600 p-2 rounded-lg text-xs font-semibold transition" title="Página Anterior">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <span class="text-xs text-slate-300 font-mono">
+                                Pág <span id="page-num">1</span> de <span id="page-count">1</span>
+                            </span>
+                            <button id="next-page" class="bg-slate-700 hover:bg-slate-600 p-2 rounded-lg text-xs font-semibold transition" title="Página Siguiente">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            
+                            <span class="text-slate-600">|</span>
+
+                            <button id="zoom-out" class="bg-slate-700 hover:bg-slate-600 p-2 rounded-lg text-xs transition" title="Reducir Zoom">
+                                <i class="fa-solid fa-magnifying-glass-minus"></i>
+                            </button>
+                            <span id="zoom-percent" class="text-xs text-slate-300 font-mono">100%</span>
+                            <button id="zoom-in" class="bg-slate-700 hover:bg-slate-600 p-2 rounded-lg text-xs transition" title="Aumentar Zoom">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </button>
+                        </div>
+
+                        <!-- Action Controls -->
+                        <div class="flex items-center space-x-2">
+                            <label for="pdf-upload" class="bg-brand-700 hover:bg-brand-600 text-white text-xs font-semibold px-3 py-2 rounded-lg cursor-pointer transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-upload"></i>
+                                <span>Cargar PDF Local</span>
+                            </label>
+                            <input type="file" id="pdf-upload" accept="application/pdf" class="hidden">
+
+                            <a id="download-pdf-btn" href="catalogo.pdf" download="catalogo.pdf" class="bg-slate-700 hover:bg-slate-600 text-white text-xs font-semibold px-3 py-2 rounded-lg transition flex items-center gap-1.5" title="Descargar PDF">
+                                <i class="fa-solid fa-download"></i>
+                                <span class="hidden sm:inline">Descargar PDF</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Canvas / Display Area -->
+                    <div class="p-4 sm:p-8 bg-slate-950 flex justify-center items-center min-h-[500px] overflow-auto relative">
+                        <canvas id="pdf-canvas" class="max-w-full shadow-2xl rounded border border-slate-800"></canvas>
+                        
+                        <!-- Fallback / Loading Overlay -->
+                        <div id="pdf-loader" class="hidden absolute inset-0 bg-slate-950/80 backdrop-blur-sm flex flex-col items-center justify-center text-white space-y-3">
+                            <i class="fa-solid fa-circle-notch fa-spin text-3xl text-brand-500"></i>
+                            <p class="text-sm font-medium">Cargando documento PDF...</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 px-6 py-3 border-t border-slate-800 text-xs text-slate-400 flex flex-col sm:flex-row justify-between items-center gap-2">
+                        <span>💡 Nombre recomendado del PDF en GitHub: <strong class="text-white">catalogo.pdf</strong></span>
+                        <span class="text-brand-400 font-medium">Tornería Daniel - Comodoro Rivadavia</span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: UBICACIÓN Y CONTACTO DIRECTO -->
+        <section id="contacto" class="py-16 lg:py-20 bg-slate-50 border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-brand-600 text-xs font-bold tracking-wider uppercase bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
+                        Contacto y Visita
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-brand-900 mt-3">
+                        UBICACIÓN Y CONTACTO
+                    </h2>
+                    <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                        Encuentre nuestro taller en Comodoro Rivadavia o comuníquese directamente
+                    </p>
+                    <div class="w-16 h-1 bg-brand-800 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+                    
+                    <!-- Left: Direct Contact Info & Workshop Facade Photo -->
+                    <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                        
+                        <!-- WhatsApp Direct Box (Key Location 3) -->
+                        <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:border-emerald-500 transition">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-2xl flex-shrink-0 shadow">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Contacto Inmediato</span>
+                                    <h3 class="text-lg font-bold text-slate-900">WhatsApp Comercial</h3>
+                                    <p class="text-sm font-mono text-slate-800 mt-1 font-bold">+54 9 297 476 3196</p>
+                                    <a href="https://wa.me/5492974763196?text=Hola%20Torner%C3%ADa%20Daniel%2C%20tengo%20una%20consulta%20sobre%20un%20trabajo%20de%20mecanizado%20para%20flota%20%5Bliviana%20%2F%20pesada%5D.%20%C2%BFEst%C3%A1n%20tomando%20trabajos%3F" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold bg-emerald-600 text-white px-4 py-2 rounded-xl hover:bg-emerald-700 transition mt-3 shadow-md">
+                                        <span>Contactar por WhatsApp</span>
+                                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                      <!-- Email Box configurado para abrir Gmail directamente -->
+<div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:border-brand-500 transition">
+    <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-brand-800 text-white flex items-center justify-center text-xl flex-shrink-0 shadow">
+            <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="overflow-hidden">
+            <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Correo Electrónico</span>
+            <h3 class="text-lg font-bold text-slate-900">Atención por Email</h3>
+            <p class="text-sm font-mono text-slate-800 mt-1 font-semibold truncate">silvaguillermo1305@gmail.com</p>
+
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=silvaguillermo1305@gmail.com&su=Consulta%20Torner%C3%ADa%20Daniel&body=Hola%20Torner%C3%ADa%20Daniel,%20tengo%20una%20consulta%20sobre%20un%20trabajo%20de%20mecanizado..." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs font-bold bg-brand-100 text-brand-800 px-3.5 py-1.5 rounded-xl hover:bg-brand-200 transition mt-3">
+                <span>Escribir por Email</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+                        <!-- Workshop Facade Image Box (ubicacion.jpeg) -->
+                        <div class="bg-white border border-slate-200 rounded-3xl p-4 shadow-sm">
+                            <div class="relative rounded-2xl overflow-hidden border border-slate-200 group">
+                                <img src="ubicacion.jpeg" alt="Fachada del taller Tornería Daniel" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500" onerror="this.onerror=null; this.src='https://placehold.co/600x350/0f2b5c/ffffff?text=Fachada+Taller+Torneria+Daniel';">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent p-3 flex flex-col justify-end text-white">
+                                    <span class="text-xs font-bold text-blue-200"><i class="fa-solid fa-building text-amber-400 mr-1"></i> Fachada del Taller</span>
+                                    <p class="text-xs text-slate-300">Ruperto Rasgido y Cjal. Ricardo Alcoleas</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+          <!-- Right: Google Maps centrado directamente en Tornería Daniel -->
+<div class="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-6 shadow-sm flex flex-col justify-between">
+    <div>
+        <div class="flex items-center justify-between gap-4 mb-4">
+            <div>
+                <h3 class="text-lg font-bold text-brand-900 flex items-center gap-2">
+                    <i class="fa-solid fa-location-dot text-red-500"></i> Ubicación en Google Maps
+                </h3>
+                <p class="text-xs text-slate-500 mt-0.5">Tornería Daniel - Comodoro Rivadavia</p>
+            </div>
+            <a href="https://maps.app.goo.gl/yQH4hzoyxaebSmJB9" target="_blank" rel="noopener noreferrer" class="bg-brand-800 hover:bg-brand-700 text-white text-xs font-bold px-4 py-2 rounded-xl shadow transition flex items-center gap-1.5">
+                <span>Ver en Google Maps</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+        </div>
+
+        <!-- Mapa Embebido buscando Tornería Daniel -->
+        <div class="w-full h-96 rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100 relative">
+            <iframe 
+                src="https://maps.google.com/maps?q=Torneria%20Daniel%2C%20Comodoro%20Rivadavia&t=&z=16&ie=UTF8&iwloc=B&output=embed" 
+                class="w-full h-full border-0" 
+                allowfullscreen="" 
+                loading="lazy" 
+                title="Ubicación Tornería Daniel">
+            </iframe>
+        </div>
+    </div>
+
+    <div class="mt-4 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between text-xs text-slate-600">
+        <span><i class="fa-solid fa-map-pin text-red-500 mr-1"></i> Tornería Daniel - Comodoro Rivadavia, Chubut</span>
+        <span class="font-bold text-brand-800">Tornería Daniel</span>
+    </div>
+</div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+                
+                <div class="flex items-center gap-4">
+                    <img src="logo.jpeg" alt="Logo Tornería Daniel" class="h-16 w-auto rounded-xl object-contain bg-white p-1" onerror="this.style.display='none'">
+                    <div>
+                        <span class="text-xl font-black text-white tracking-wider block">TORNERÍA DANIEL</span>
+                        <span class="text-xs text-slate-400">Tornería Mecánica de Precisión - de Daniel Silva</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-6 text-xs font-semibold text-slate-300">
+                    <a href="#inicio" class="hover:text-white transition">Inicio</a>
+                    <a href="#empresa" class="hover:text-white transition">La Empresa</a>
+                    <a href="#servicios" class="hover:text-white transition">Servicios</a>
+                    <a href="#catalogo" class="hover:text-white transition">Catálogo PDF</a>
+                    <a href="#contacto" class="hover:text-white transition">Contacto</a>
+                </div>
+
+            </div>
+
+            <div class="pt-6 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <p>© <span id="year">2026</span> Tornería Daniel. Todos los derechos reservados.</p>
+                <p>Comodoro Rivadavia, Chubut | Tel: +54 9 297 476 3196</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- IMAGE MODAL POPUP -->
+    <div id="image-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeImageModal()">
+        <div class="relative max-w-4xl w-full bg-slate-900 rounded-3xl overflow-hidden border border-slate-700 shadow-2xl" onclick="event.stopPropagation()">
+            <button onclick="closeImageModal()" class="absolute top-4 right-4 bg-slate-800 hover:bg-slate-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition z-10 shadow-lg">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <div class="p-2 bg-black flex justify-center max-h-[75vh]">
+                <img id="modal-img" src="" alt="Ampliada" class="max-h-[70vh] w-auto object-contain rounded-xl">
+            </div>
+            <div class="p-6 bg-slate-900 text-white">
+                <h4 id="modal-caption" class="text-lg font-bold text-blue-200"></h4>
+                <p class="text-xs text-slate-400 mt-1">Tornería Daniel - Fotografía de componente industrial</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Set Current Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Image Modal Handler
+        function openImageModal(imgSrc, caption) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalCaption = document.getElementById('modal-caption');
+
+            modalImg.src = imgSrc;
+            modalCaption.textContent = caption;
+            modal.classList.remove('hidden');
+        }
+
+        function closeImageModal() {
+            document.getElementById('image-modal').classList.add('hidden');
+        }
+
+        // PDF VISOR INTERACTIVO & RENDERER (PDF.JS)
+        if (window['pdfjs-dist/build/pdf']) {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+
+        let pdfDoc = null,
+            pageNum = 1,
+            pageRendering = false,
+            pageNumPending = null,
+            scale = 1.2,
+            canvas = document.getElementById('pdf-canvas'),
+            ctx = canvas.getContext('2d'),
+            loader = document.getElementById('pdf-loader');
+
+        // Load Default PDF ('catalogo.pdf')
+        function loadPDF(url) {
+            if (loader) loader.classList.remove('hidden');
+            
+            pdfjsLib.getDocument(url).promise.then(function(pdf) {
+                pdfDoc = pdf;
+                document.getElementById('page-count').textContent = pdf.numPages;
+                pageNum = 1;
+                renderPage(pageNum);
+            }).catch(err => {
+                console.warn("Cargando vista previa de contingencia para el visor:", err);
+                renderFallbackCanvas();
+                if (loader) loader.classList.add('hidden');
+            });
+        }
+
+        function renderPage(num) {
+            pageRendering = true;
+            if (loader) loader.classList.remove('hidden');
+
+            pdfDoc.getPage(num).then(function(page) {
+                const viewport = page.getViewport({ scale: scale });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+                const renderTask = page.render(renderContext);
+
+                renderTask.promise.then(function() {
+                    pageRendering = false;
+                    if (loader) loader.classList.add('hidden');
+                    if (pageNumPending !== null) {
+                        renderPage(pageNumPending);
+                        pageNumPending = null;
+                    }
+                });
+            }).catch(err => {
+                renderFallbackCanvas();
+                if (loader) loader.classList.add('hidden');
+            });
+
+            document.getElementById('page-num').textContent = num;
+            document.getElementById('zoom-percent').textContent = Math.round(scale * 100) + '%';
+        }
+
+        function queueRenderPage(num) {
+            if (pageRendering) {
+                pageNumPending = num;
+            } else {
+                renderPage(num);
+            }
+        }
+
+        document.getElementById('prev-page').addEventListener('click', () => {
+            if (pageNum <= 1) return;
+            pageNum--;
+            queueRenderPage(pageNum);
+        });
+
+        document.getElementById('next-page').addEventListener('click', () => {
+            if (!pdfDoc || pageNum >= pdfDoc.numPages) return;
+            pageNum++;
+            queueRenderPage(pageNum);
+        });
+
+        document.getElementById('zoom-in').addEventListener('click', () => {
+            scale += 0.2;
+            queueRenderPage(pageNum);
+        });
+
+        document.getElementById('zoom-out').addEventListener('click', () => {
+            if (scale <= 0.6) return;
+            scale -= 0.2;
+            queueRenderPage(pageNum);
+        });
+
+        // Custom PDF Upload Event
+        document.getElementById('pdf-upload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file && file.type === "application/pdf") {
+                const fileReader = new FileReader();
+                if (loader) loader.classList.remove('hidden');
+
+                fileReader.onload = function() {
+                    const typedarray = new Uint8Array(this.result);
+                    pdfjsLib.getDocument(typedarray).promise.then(function(pdf) {
+                        pdfDoc = pdf;
+                        document.getElementById('page-count').textContent = pdf.numPages;
+                        document.getElementById('pdf-doc-title').textContent = file.name;
+                        pageNum = 1;
+                        renderPage(pageNum);
+                    });
+                };
+                fileReader.readAsArrayBuffer(file);
+            }
+        });
+
+        // Fallback Canvas
+        function renderFallbackCanvas() {
+            canvas.width = 650;
+            canvas.height = 800;
+
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.strokeStyle = "#0f2b5c";
+            ctx.lineWidth = 3;
+            ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
+
+            ctx.fillStyle = "#0f2b5c";
+            ctx.fillRect(20, 20, canvas.width - 40, 100);
+
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "bold 24px Inter, sans-serif";
+            ctx.fillText("TORNERÍA DANIEL", 40, 60);
+            ctx.font = "14px Inter, sans-serif";
+            ctx.fillStyle = "#93c5fd";
+            ctx.fillText("CARPETA DE PROVEEDOR & CATÁLOGO TÉCNICO", 40, 90);
+
+            ctx.fillStyle = "#1e293b";
+            ctx.font = "bold 15px Inter, sans-serif";
+            ctx.fillText("TORNERÍA MECÁNICA DE PRECISIÓN - DE DANIEL SILVA", 40, 160);
+
+            ctx.fillStyle = "#475569";
+            ctx.font = "12px Inter, sans-serif";
+            const lines = [
+                "Tornería Daniel es una PyME dedicada a la prestación de servicios de tornería,",
+                "mecanizado y fabricación de piezas a medida, según plano o muestra.",
+                "Trabajamos especialmente para la industria, incluyendo el sector petrolero e industrial.",
+                "",
+                "• Producción de series pequeñas y grandes cantidades.",
+                "• Reparaciones de pistones hidráulicos y herramientas petroleras.",
+                "• Mantenimiento de flota pesada (rodamientos, frenos, llaves Foster/BJ).",
+                "• Reparación de cajas angulares, cardanes y diferenciales.",
+                "• Fabricación de bujes, pernos, roscas especiales y chaveteros."
+            ];
+
+            let y = 195;
+            lines.forEach(l => {
+                ctx.fillText(l, 40, y);
+                y += 22;
+            });
+
+            ctx.fillStyle = "#f8fafc";
+            ctx.fillRect(40, 420, canvas.width - 80, 220);
+            ctx.strokeStyle = "#cbd5e1";
+            ctx.strokeRect(40, 420, canvas.width - 80, 220);
+
+            ctx.fillStyle = "#1e40af";
+            ctx.font = "bold 13px Inter, sans-serif";
+            ctx.fillText("DOCUMENTO: catalogo.pdf", 60, 450);
+            ctx.fillStyle = "#64748b";
+            ctx.font = "12px Inter, sans-serif";
+            ctx.fillText("Cargue 'catalogo.pdf' en su repositorio para la visualización directa del archivo.", 60, 480);
+
+            ctx.fillStyle = "#0f2b5c";
+            ctx.fillRect(20, 730, canvas.width - 40, 50);
+
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "12px Inter, sans-serif";
+            ctx.fillText("Contacto: +54 9 297 476 3196 | silvaguillermo1305@gmail.com", 40, 760);
+        }
+
+        window.onload = function() {
+            loadPDF('catalogo.pdf');
+        };
+    </script>
+
+</body>
+</html>
